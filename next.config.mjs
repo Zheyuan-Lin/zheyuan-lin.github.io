@@ -27,6 +27,9 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  output: 'export',
+  basePath: '/personal-website-2',
+  assetPrefix: '/personal-website-2',
 }
 
 if (userConfig) {

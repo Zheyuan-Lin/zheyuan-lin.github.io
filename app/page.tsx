@@ -4,7 +4,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { ArrowRight, Code, Github, Linkedin, Mail } from "lucide-react"
-import { TypewriterEffect } from "@/components/typewriter-effect"
 
 export default function Home() {
   return (
@@ -17,10 +16,7 @@ export default function Home() {
           className="max-w-3xl mx-auto"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span>Hi, I'm </span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
-              <TypewriterEffect text="Zheyuan Lin" speed={150} delay={500} />
-            </span>
+            <span>Hi, I'm Zheyuan</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-muted-foreground">
             A passionate software engineer specializing in building exceptional digital experiences.
