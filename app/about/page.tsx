@@ -34,7 +34,7 @@ export default function About() {
         >
           <div className="relative w-full aspect-square max-w-md mx-auto overflow-hidden rounded-xl">
             <Image
-              src="/personal-website-2/self.jpg"
+              src="/self.jpg"
               alt="Zheyuan Lin"
               width={400}
               height={400}
