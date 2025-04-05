@@ -29,8 +29,7 @@ jobs:
 
       - name: Clean install dependencies
         run: |
-          rm -rf node_modules
-          rm -f package-lock.json
+          rm -rf node_modules .next package-lock.json
           npm install --legacy-peer-deps
 
       - name: Setup Pages
