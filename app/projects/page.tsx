@@ -3,127 +3,213 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, TrendingUp, Users, Zap, Award } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { SkillBadge } from "@/components/skill-badge"
+import { Badge } from "@/components/ui/badge"
 
-const projects = [
+const projectCategories = [
   {
-    title: "General Business Management System Framework",
-    description:
-      "Deployed cloud-native microservices on AWS EKS via Kubernetes, achieving seamless scalability for 10k+ concurrent users. Implemented performance monitoring with Prometheus, Grafana, and ELK Stack, reducing system downtime by 25%. Automated CI/CD pipelines using Helm, cutting deployment times by 40% and reducing manual intervention by 60%.",
-    technologies: ["Spring Cloud", "Vue.js", "Nginx", "ELK", "Sentinel", "Zookeeper", "AWS EKS", "Kubernetes"],
-    github: "https://github.com/Zheyuan-Lin",
-    demo: "#",
-    image: "/placeholder.svg?height=300&width=600",
+    title: "Analytics & Data Processing",
+    icon: TrendingUp,
+    projects: [
+      {
+        title: "TDDaily - Video Analytics Platform",
+        description: "Built an analytics platform tracking 45K+ Bilibili videos with a microservices backend using Spring Cloud and Spring Boot frameworks.",
+        impact: "45K+ videos tracked, 75% cache hit rate, real-time data processing",
+        technologies: ["Spring Cloud", "Spring Boot", "Kubernetes", "Redis Sentinel", "MySQL", "RabbitMQ", "Python"],
+        highlights: ["Microservices Architecture", "High Availability Caching", "Async Processing"],
+        github: "https://github.com/Zheyuan-Lin",
+        demo: "#",
+        image: "/placeholder.svg?height=300&width=600",
+        stats: { videos: "45K+", hitRate: "75%", uptime: "99.9%" }
+      }
+    ]
   },
   {
-    title: "TDDaily: Online Video Data Tracking and Visualization",
-    description:
-      "Built a web app with 1k+ weekly users and 12k+ page views, enabling 24/7 tracking of 435k+ Bilibili videos. Designed interactive dashboards for video trends, subscriber growth, and real-time rankings using ECharts. Developed multithreaded Python crawlers (urllib3) to fetch API data, storing it in MySQL for efficient querying. Created RESTful APIs with Hibernate ORM, improving backend scalability and supporting CRUD operations.",
-    technologies: ["Spring Boot", "Redis", "MyBatis", "Python", "MySQL", "ECharts", "Hibernate"],
-    github: "https://github.com/Zheyuan-Lin",
-    demo: "#",
-    image: "/placeholder.svg?height=300&width=600",
-  },
-  {
-    title: "Tech Lead in Emory CS Club",
-    description:
-      "Developed a Cold Start Pop-up Manager to consolidate and prioritize pop-ups, improving user experience by controlling frequency and reducing fatigue; built a task queue system for caching and handling pop-up activities. Engineered an LFU-based File Cache Manager using C++, providing create, query, and delete interfaces. Leveraged NoSQL for persistent storage and recursive locking for thread safety, achieving a 98% cache hit rate.",
-    technologies: ["C++", "React.js", "JavaScript", "NoSQL"],
-    github: "https://github.com/Zheyuan-Lin",
-    demo: "#",
-    image: "/placeholder.svg?height=300&width=600",
-  },
-  {
-    title: "Chinese License Plate Recognition",
-    description:
-      "Trained a custom Computer Vision model to detect and recognize Chinese license plates with 95% accuracy. Pre-processed 1k+ car images using affine transformation and color space separation for text extraction. Built the model from scratch without PyTorch, achieving a 95% success rate in real-world testing.",
-    technologies: ["Python", "Computer Vision", "Image Processing"],
-    github: "https://github.com/Zheyuan-Lin",
-    demo: "#",
-    image: "/placeholder.svg?height=300&width=600",
-  },
+    title: "Research & Visualization",
+    icon: Users,
+    projects: [
+      {
+        title: "Lumos Visualization Interface",
+        description: "Built a research platform with Angular and D3.js, studying cognitive biases in data interpretation for CHI 2026 submission.",
+        impact: "99.5% uptime, <100ms latency for 10+ concurrent sessions, 5K+ interaction events/session",
+        technologies: ["Angular", "TypeScript", "Node.js", "Express.js", "Docker", "PostgreSQL", "WebSocket", "D3.js"],
+        highlights: ["Real-time Collaboration", "Bias Detection", "Research Platform"],
+        github: "https://github.com/Zheyuan-Lin",
+        demo: "#",
+        image: "/placeholder.svg?height=300&width=600",
+        stats: { uptime: "99.5%", latency: "<100ms", events: "5K+" }
+      }
+    ]
+  }
 ]
 
 export default function Projects() {
   return (
     <div className="container mx-auto px-4 py-16">
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl font-bold mb-8 text-center"
+        transition={{ duration: 0.6 }}
+        className="text-center mb-16"
       >
-        My Projects
-      </motion.h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground via-primary to-blue-600 bg-clip-text text-transparent">
+          Featured Projects
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Innovative solutions that solve real-world problems and create meaningful impact
+        </p>
+      </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {projects.map((project, index) => (
+      <div className="space-y-16">
+        {projectCategories.map((category, categoryIndex) => (
           <motion.div
-            key={index}
+            key={category.title}
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            whileHover={{ y: -10 }}
-            className="h-full"
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+            viewport={{ once: true }}
           >
-            <Card className="h-full flex flex-col overflow-hidden border-2 hover:border-primary/50 transition-all duration-300">
-              <div className="relative h-48 w-full overflow-hidden">
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-500 hover:scale-110"
-                />
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-blue-600 rounded-xl flex items-center justify-center">
+                  <category.icon className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold">{category.title}</h2>
               </div>
-              <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {project.technologies.slice(0, 4).map((tech, i) => (
-                      <SkillBadge key={i} skill={tech} index={i} />
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="text-xs bg-secondary/50 px-2 py-1 rounded-full">
-                        +{project.technologies.length - 4} more
-                      </span>
-                    )}
-                  </div>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <p className="text-muted-foreground">{project.description}</p>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button asChild variant="outline" size="sm">
-                  <Link
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
-                    <Github className="h-4 w-4" />
-                    Code
-                  </Link>
-                </Button>
-                <Button asChild size="sm">
-                  <Link
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-1 gap-8">
+              {category.projects.map((project, projectIndex) => (
+                <motion.div
+                  key={projectIndex}
+                  initial={{ opacity: 0, x: projectIndex % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: projectIndex * 0.2 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                  className="group"
+                >
+                  <Card className="overflow-hidden border-2 hover:border-primary/50 transition-all duration-500 shadow-lg hover:shadow-2xl bg-gradient-to-br from-card to-card/80">
+                    <div className="lg:flex">
+                      {/* Image Section */}
+                      <div className="lg:w-1/2 relative h-64 lg:h-auto overflow-hidden">
+                        <Image
+                          src={project.image || "/placeholder.svg"}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                      </div>
+
+                      {/* Content Section */}
+                      <div className="lg:w-1/2 p-8 flex flex-col justify-between">
+                        <div>
+                          <CardHeader className="p-0 mb-4">
+                            <CardTitle className="text-2xl mb-2 group-hover:text-primary transition-colors">
+                              {project.title}
+                            </CardTitle>
+                            <CardDescription className="text-base leading-relaxed">
+                              {project.description}
+                            </CardDescription>
+                          </CardHeader>
+
+                          <CardContent className="p-0 space-y-6">
+                            {/* Impact Section */}
+                            <div className="bg-gradient-to-r from-primary/10 to-blue-600/10 p-4 rounded-lg">
+                              <h4 className="font-semibold text-sm text-primary mb-2">IMPACT & RESULTS</h4>
+                              <p className="text-sm text-muted-foreground">{project.impact}</p>
+                            </div>
+
+                            {/* Key Features */}
+                            <div>
+                              <h4 className="font-semibold text-sm mb-3">KEY HIGHLIGHTS</h4>
+                              <div className="flex flex-wrap gap-2">
+                                {project.highlights.map((highlight, i) => (
+                                  <Badge key={i} variant="secondary" className="text-xs">
+                                    {highlight}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Technologies */}
+                            <div>
+                              <h4 className="font-semibold text-sm mb-3">TECHNOLOGIES</h4>
+                              <div className="flex flex-wrap gap-2">
+                                {project.technologies.map((tech, i) => (
+                                  <Badge key={i} variant="outline" className="text-xs">
+                                    {tech}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Stats */}
+                            <div className="grid grid-cols-3 gap-4 pt-4">
+                              {Object.entries(project.stats).map(([key, value]) => (
+                                <div key={key} className="text-center">
+                                  <div className="text-lg font-bold text-primary">{value}</div>
+                                  <div className="text-xs text-muted-foreground capitalize">{key}</div>
+                                </div>
+                              ))}
+                            </div>
+                          </CardContent>
+                        </div>
+
+                        <CardFooter className="p-0 pt-6 flex gap-3">
+                          <Button asChild variant="outline" size="sm" className="flex-1">
+                            <Link
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2"
+                            >
+                              <Github className="h-4 w-4" />
+                              Code
+                            </Link>
+                          </Button>
+                          <Button asChild size="sm" className="flex-1 bg-gradient-to-r from-primary to-blue-600">
+                            <Link
+                              href={project.demo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2"
+                            >
+                              <ExternalLink className="h-4 w-4" />
+                              Demo
+                            </Link>
+                          </Button>
+                        </CardFooter>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         ))}
       </div>
+
+      {/* Call to Action */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center mt-20 p-8 bg-gradient-to-r from-primary/10 via-blue-600/10 to-purple-600/10 rounded-2xl border"
+      >
+        <h3 className="text-2xl font-bold mb-4">Interested in collaborating?</h3>
+        <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          I'm always excited to work on innovative projects that make a difference.
+          Let's build something amazing together!
+        </p>
+        <Button asChild size="lg" className="bg-gradient-to-r from-primary to-blue-600">
+          <Link href="/contact">Get In Touch</Link>
+        </Button>
+      </motion.div>
     </div>
   )
 }
