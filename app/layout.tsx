@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="flex flex-col min-h-screen bg-gradient-to-b from-background to-muted">
+          <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />
@@ -32,7 +32,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
