@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    /* Light theme - Vibrant Color System */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -23,17 +24,45 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 262.1 83.3% 57.8%;
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Enhanced Color Palette */
+    --blue: 220 100% 55%;
+    --blue-foreground: 0 0% 100%;
+    --green: 142 76% 36%;
+    --green-foreground: 0 0% 100%;
+    --orange: 25 95% 53%;
+    --orange-foreground: 0 0% 100%;
+    --purple: 262.1 83.3% 57.8%;
+    --purple-foreground: 0 0% 100%;
+    --pink: 330 81% 60%;
+    --pink-foreground: 0 0% 100%;
+    --teal: 180 84% 40%;
+    --teal-foreground: 0 0% 100%;
+    --cyan: 195 100% 50%;
+    --cyan-foreground: 0 0% 100%;
+    --yellow: 48 96% 53%;
+    --yellow-foreground: 222.2 84% 4.9%;
+
+    /* Gradient Color Stops */
+    --gradient-from: 220 100% 55%;
+    --gradient-via: 262.1 83.3% 57.8%;
+    --gradient-to: 330 81% 60%;
+
+    /* Background Gradients */
+    --bg-gradient-light: linear-gradient(135deg, hsl(220 100% 95%) 0%, hsl(262 83% 95%) 50%, hsl(330 81% 95%) 100%);
+    --bg-gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 0.8) 0%, hsl(220 100% 98%) 100%);
   }
 
   .dark {
+    /* Dark theme - Enhanced colors */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 263.4 70% 50.4%;
+    --primary: 263.4 70% 60%;
     --primary-foreground: 210 40% 98%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -45,7 +74,34 @@
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 263.4 70% 50.4%;
+    --ring: 263.4 70% 60%;
+
+    /* Enhanced Color Palette - Dark variants */
+    --blue: 220 100% 65%;
+    --blue-foreground: 0 0% 100%;
+    --green: 142 76% 46%;
+    --green-foreground: 0 0% 100%;
+    --orange: 25 95% 63%;
+    --orange-foreground: 0 0% 100%;
+    --purple: 262.1 83.3% 67.8%;
+    --purple-foreground: 0 0% 100%;
+    --pink: 330 81% 70%;
+    --pink-foreground: 0 0% 100%;
+    --teal: 180 84% 50%;
+    --teal-foreground: 0 0% 100%;
+    --cyan: 195 100% 60%;
+    --cyan-foreground: 0 0% 100%;
+    --yellow: 48 96% 63%;
+    --yellow-foreground: 222.2 84% 4.9%;
+
+    /* Gradient Color Stops - Dark */
+    --gradient-from: 220 100% 25%;
+    --gradient-via: 262.1 83.3% 25%;
+    --gradient-to: 330 81% 25%;
+
+    /* Background Gradients - Dark */
+    --bg-gradient-light: linear-gradient(135deg, hsl(220 100% 5%) 0%, hsl(262 83% 5%) 50%, hsl(330 81% 5%) 100%);
+    --bg-gradient-card: linear-gradient(135deg, hsl(222.2 84% 6%) 0%, hsl(220 100% 8%) 100%);
   }
 }
 
@@ -55,6 +111,12 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+  .dark body {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 20px 20px;
   }
 }
 
@@ -110,5 +172,106 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary;
+}
+
+/* Enhanced card styles */
+.card-enhanced {
+  @apply bg-card border border-border/50 rounded-xl shadow-sm backdrop-blur-sm;
+  background: linear-gradient(135deg, hsl(var(--card) / 0.8), hsl(var(--card) / 0.95));
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.dark .card-enhanced {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Glass morphism effect */
+.glass {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced button hover effects */
+.btn-enhanced {
+  @apply transition-all duration-200 ease-in-out;
+  transform: translateY(0);
+}
+
+.btn-enhanced:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Tech stack badge enhancement */
+.tech-badge {
+  @apply bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-full px-3 py-1 text-xs;
+  transition: all 0.2s ease-in-out;
+}
+
+.tech-badge:hover {
+  @apply from-primary/10 to-primary/20 border-primary/30;
+  transform: translateY(-1px);
+}
+
+/* Section dividers */
+.section-divider {
+  background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+  height: 1px;
+  margin: 2rem 0;
+}
+
+/* Enhanced image containers */
+.image-enhanced {
+  @apply rounded-lg overflow-hidden shadow-md;
+  background: linear-gradient(45deg, hsl(var(--muted) / 0.3), hsl(var(--muted) / 0.1));
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+/* Subtle background patterns */
+.pattern-dots {
+  background-image: radial-gradient(circle, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.pattern-grid {
+  background-image:
+    linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Professional highlight boxes */
+.highlight-box {
+  @apply p-4 rounded-lg border-l-4 border-primary bg-primary/5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dark .highlight-box {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced typography */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-600 to-pink-600;
+}
+
+/* Hover effects for interactive elements */
+.hover-lift {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
