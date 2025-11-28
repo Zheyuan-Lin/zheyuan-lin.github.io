@@ -21,10 +21,12 @@ export const experiences = [
     description: "Developed distributed ID service with dual-mode Segment/Snowflake architecture, generating 5K IDs/second while reducing database queries by 95%.",
     stack: ["java", "spring", "mysql", "redis"],
     highlights: [
-      "Built Snowflake mode with ZooKeeper worker coordination, producing time-sortable 64-bit IDs with clock drift detection",
-      "Designed lock-free concurrency using AtomicLong and ReadWriteLock, enabling async loading to eliminate generation latency",
-      "Created adaptive step algorithm auto-scaling batch size 1K-100K based on traffic patterns, reducing wasted IDs by 40%",
-      "Coordinated with 3 downstream service teams to validate ID generation requirements, migrating 5 legacy services"
+
+      "Improved A/B testing traffic allocator serving 500+ concurrent experiments; consolidated 5 departmental APIs into unifiedSDK reducing integration time by 80% (2 days → 2 hours) and eliminating cross-team coordination overhead",
+      "Achieved 70x P99.9 latency improvement (363ms → 5.2ms) by replacing runtime 4-table joins with single-table lookup to pre-materialize Redis-backed wide tables; reduced SDK memory footprint by 60% through minimal field-set design",
+      "Eliminated configuration update blocking by implementing CopyOnWrite dual-buffer cache with atomic pointer swaps and Redis pub/sub propagation, reducing config deployment from overnight maintenance windows to <5 minutes in production",
+      "Built property-based testing framework generating 10M+ random test cases to validate functional parity with legacy system, identifying and fixing 12 critical edge cases (zero userId, incorrect 100% traffic allocation) achieving 99.99% consistency", 
+      "Built backward-compatible adapter layer enabling legacy .NET and Java clients to use new SDK without code changes, supported gradual migration of 100+ applications with canary deployments, achieving <5% rollback rate"
     ]
   },
   {
@@ -33,9 +35,11 @@ export const experiences = [
     description: "Built real-time analytics pipeline processing 5K A/B testing events/sec from Kafka to ClickHouse, enabling product teams to analyze experiment results within minutes",
     stack: ["java", "spring", "kafka", "redis", "clickhouse", "prometheus"],
     highlights: [
-      "Designed event transformation service mapping JSON to ClickHouse schema with data validation and comprehensive error logging",
-      "Configured Spring profiles (dev/staging/prod), implemented exponential backoff retry with Resilience4j, and added CircuitBreaker",
-      "Established JUnit testing with 85% coverage, validating stream pipelines with performance benchmarks simulating production load"
+      "Developed Kubernetes debugging platform serving 200+ backend engineers across 30+ microservices managing 600+ pods in production; reduced infrastructure support tickets by 40%, saving estimated 80+ hours/month in manual troubleshooting in production",
+      "Achieved P95 latency 45ms at 500 req/sec during load testing, processing 300+ daily health checks and 40-60 pod operations across 52 namespaces; optimized through gRPC connection pooling and Redis caching (94.5% hit rate)",
+      "Built Go gRPC microservices platform for workload health analysis, pod management, and monitoring; implemented JWT/RBAC authentication, namespace-scoped permissions, and PostgreSQL audit logging tracking 10K+ ops/m",
+      "Developed React console plugin with Material-UI providing enterprise developer portal; implemented real-time workload visualization via WebSockets and automated health scoring with restart pattern detection",
+      "Architected comprehensive Chronosphere monitoring integration with automated alerting and dashboard embedding, achieving 99.9% uptime; built intelligent health analysis engine achieving 96.8% operation success rate"
     ]
   },
   {
@@ -44,28 +48,25 @@ export const experiences = [
     description: "Extended gRPC-based Kubernetes API with 22 endpoints serving 1,900+ engineers, reducing incident resolution time by 75%.",
     stack: ["go", "grpc", "kubernetes", "react", "postgresql", "redis", "prometheus"],
     highlights: [
-      "Built React console plugin with JWT/RBAC authentication, visualizing pod health across 50+ namespaces.",
-      "Designed health analysis engine processing 1,000+ requests/s, improving success rate by 35% and reducing debugging time by 60%",
-      "Implemented monitor in Chronosphere with dashboards tracking API latency and CPU/memory utilization with automated alerting",
-      "Engineered automated pod remediation system with PostgreSQL audit trail, handling 500+ daily cleanup operations",
-      "Optimized performance with Redis caching, achieving 70% hit rate and goroutine parallelization, reducing p95 latency to 450ms"
+      "Built Snowflake mode with ZooKeeper worker coordination, producing time-sortable 64-bit IDs with clock drift detection",
+      "Designed lock-free concurrency using AtomicLong and ReadWriteLock, enabling async loading to eliminate generation latency",
+      "Created adaptive step algorithm auto-scaling batch size 1K-100K based on traffic patterns, reducing wasted IDs by 40%",
+      "Coordinated with 3 downstream service teams to validate ID generation requirements, migrating 5 legacy services"
     ]
   }
 ]
 
 export const projects = [
   {
-    title: "Low-Income Housing Tax Credit Investment Platform",
-    description: "Built ML pipeline for affordable housing investment analysis, processing 1,860+ applications, supporting $2.5M+ investment decisions. Developed PySpark ETL extracting 40+ features from PDFs, APIs, and databases with Google Maps and Census integration.",
-    image: "/tdd.png",
-    stack: ["python", "pyspark", "flask", "redis", "aws", "docker", "postgresql"],
-    link: "https://github.com/Zheyuan-Lin/tdddaily",
+    title: "Jen AI Finetuning",
+    description: "Fine-tuned Llama-2-7B using QLoRA (4-bit quantization, rank-32) on Jenkins domain knowledge, achieving 45% accuracy improvement (ROUGE-L: 0.52→0.75) on technical troubleshooting queries while training only 1.7% of parameters",
+    image: "/jenai.png",
+    stack: ["python", "Llama-2", "QLoRA", "Google Colab", "aws", "Fast", "Langchain"],
+    link: "https://github.com/Zheyuan-Lin/jenkin-ai-finetune",
     highlights: [
-      "Engineered Flask REST API serving predictions and feature extraction with ≤200ms P95 latency",
-      "Resolved Google Maps rate limiting using Redis caching, achieving 92% hit rate with 7-day TTL",
-      "Built geospatial scoring system using Shapely for school district boundary intersection and PostGIS spatial queries",
-      "Integrated LLM-based parser using GPT-4 API for structured PDF extraction, improving data quality",
-      "Deployed on AWS EC2 with Docker containerization and automated CI/CD pipeline using GitHub Actions"
+      "Built ETL pipeline scraping 3,200+ Q&A pairs; reduced noise by 40% through deduplication and quality filtering",
+      "Deployed LangChain chatbot with conversational memory; quantized to GGML enabling CPU inference at 15 tokens/sec",
+      "Developed Flask + React TypeScript full-stack app for chat interface with Docker Compose; achieved one-command setup"
     ]
   },
   {
@@ -97,11 +98,6 @@ export const interests = [
     description: "Shooting film on a Canon AE-1. Currently exploring long exposures and street photography."
   },
   {
-    icon: "🎮",
-    title: "Gaming",
-    description: "Strategy games enthusiast. Civilization VI, Factorio, and chess puzzles are my go-to brain workouts."
-  },
-  {
     icon: "☕",
     title: "Coffee Nerd",
     description: "Perfecting the art of pour-over. Current favorite: Ethiopian Yirgacheffe light roast."
@@ -110,13 +106,18 @@ export const interests = [
     icon: "🐱",
     title: "Cat Dad",
     description: "My cat supervises all my code reviews. She has strong opinions about variable naming."
+  },
+  {
+    icon: "🌄",
+    title: "Adventure",
+    description: "When not coding, you'll find me hiking trails and capturing nature's algorithms."
   }
 ]
 
 export const lifePhotos = [
-  { src: "/self.jpg", alt: "Personal" },
-  { src: "/cat.png", alt: "Cat" },
-  { src: "/coffee_art.png", alt: "Coffee" }
+  { src: "/self.jpg", alt: "Personal photo" },
+  { src: "/cat.png", alt: "My coding supervisor" },
+  { src: "/adventure.png", alt: "Adventure time" }
 ]
 
 export const quote = "The best code is the code you don't have to write. The second best is code that tells a story."
@@ -145,5 +146,11 @@ export const techLogos: { [key: string]: string } = {
   "zookeeper": "https://www.svgrepo.com/show/353575/zookeeper.svg",
   "clickhouse": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clickhouse/clickhouse-original.svg",
   "prometheus": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg",
-  "websocket": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg"
+  "websocket": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
+  // New AI/ML related logos
+  "Llama-2": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
+  "QLoRA": "https://upload.wikimedia.org/wikipedia/commons/8/84/Artificial_neural_network.svg",
+  "Google Colab": "https://colab.research.google.com/img/colab_favicon_256px.png",
+  "Fast": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+  "Langchain": "https://python.langchain.com/favicon.ico"
 }
