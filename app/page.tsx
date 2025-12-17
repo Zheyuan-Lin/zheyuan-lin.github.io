@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
-import { personalInfo, experiences, projects, currently, interests, quote } from "@/data/portfolio"
+import { personalInfo, experiences, projects, currently, interests, quote, techLogos } from "@/data/portfolio"
 import { TiltCard } from "@/components/tilt-card"
 import { MagneticButton } from "@/components/magnetic-button"
 import { SpotlightSection } from "@/components/spotlight-section"
@@ -43,32 +43,27 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gray-950 text-white overflow-x-hidden relative">
+      {/* Fixed Background Image for entire page */}
+      <div className="fixed inset-0 z-0">
+        <Image
+          src="/adventure.png"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/60 via-gray-950/80 to-gray-950/90" />
+      </div>
+
       {/* Hero Header with Parallax */}
       <motion.header 
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden z-10"
         style={{ y: heroY, opacity: heroOpacity }}
       >
         {/* Animated Background */}
         <FloatingShapes variant="hero" />
-        
-        {/* Background Image with Parallax */}
-        <motion.div 
-          className="absolute inset-0"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          <Image
-            src="/adventure.png"
-            alt="Adventure background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-950/70 via-gray-950/50 to-gray-950" />
-        </motion.div>
 
         {/* Hero Content */}
         <motion.div 
@@ -169,7 +164,7 @@ export default function Home() {
 
       {/* Experience Section with Spotlight */}
       <SpotlightSection 
-        className="py-24 bg-gray-900"
+        className="relative z-10 py-24 bg-gray-900/70 backdrop-blur-sm"
         spotlightColor="rgba(59, 130, 246, 0.12)"
       >
         <div className="max-w-5xl mx-auto px-6">
@@ -204,19 +199,41 @@ export default function Home() {
 
                     {/* Tech Stack with Stagger */}
                     <motion.div 
-                      className="flex gap-2 flex-wrap mb-6"
+                      className="flex gap-3 flex-wrap mb-6 items-center"
                       variants={containerVariants}
                     >
-                      {exp.stack.map((tech, techIndex) => (
-                        <motion.span
-                          key={tech}
-                          className="text-xs px-4 py-2 rounded-full text-white font-medium bg-gradient-to-r from-blue-600 to-blue-500 shadow-lg shadow-blue-500/20"
-                          whileHover={{ scale: 1.1, y: -2 }}
-                          transition={{ delay: techIndex * 0.05 }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
+                      {exp.stack.map((tech, techIndex) => {
+                        const logoUrl = techLogos[tech.toLowerCase()]
+                        return logoUrl ? (
+                          <motion.div
+                            key={tech}
+                            className="group relative"
+                            whileHover={{ scale: 1.15, y: -3 }}
+                            transition={{ delay: techIndex * 0.05 }}
+                          >
+                            <Image
+                              src={logoUrl}
+                              alt={tech}
+                              width={32}
+                              height={32}
+                              className="w-8 h-8 object-contain drop-shadow-lg"
+                              unoptimized
+                            />
+                            <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                              {tech}
+                            </span>
+                          </motion.div>
+                        ) : (
+                          <motion.span
+                            key={tech}
+                            className="text-xs px-4 py-2 rounded-full text-white font-medium bg-gradient-to-r from-blue-600 to-blue-500 shadow-lg shadow-blue-500/20"
+                            whileHover={{ scale: 1.1, y: -2 }}
+                            transition={{ delay: techIndex * 0.05 }}
+                          >
+                            {tech}
+                          </motion.span>
+                        )
+                      })}
                     </motion.div>
 
                     {/* Highlights */}
@@ -243,7 +260,7 @@ export default function Home() {
 
       {/* Projects Section */}
       <SpotlightSection 
-        className="py-24 bg-gray-950"
+        className="relative z-10 py-24 bg-gray-950/70 backdrop-blur-sm"
         spotlightColor="rgba(147, 51, 234, 0.1)"
       >
         <FloatingShapes variant="dark" />
@@ -280,16 +297,37 @@ export default function Home() {
                     <p className="text-gray-400 mb-5 leading-relaxed text-sm">{project.description}</p>
 
                     {/* Tech Stack */}
-                    <div className="flex gap-2 flex-wrap mb-5">
-                      {project.stack.slice(0, 5).map((tech) => (
-                        <motion.span 
-                          key={tech} 
-                          className="text-xs px-3 py-1.5 rounded-full text-gray-300 font-medium bg-gray-800 border border-gray-700"
-                          whileHover={{ scale: 1.05, borderColor: "rgba(147, 51, 234, 0.5)" }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
+                    <div className="flex gap-3 flex-wrap mb-5 items-center">
+                      {project.stack.slice(0, 5).map((tech) => {
+                        const logoUrl = techLogos[tech.toLowerCase()]
+                        return logoUrl ? (
+                          <motion.div
+                            key={tech}
+                            className="group relative"
+                            whileHover={{ scale: 1.15, y: -2 }}
+                          >
+                            <Image
+                              src={logoUrl}
+                              alt={tech}
+                              width={28}
+                              height={28}
+                              className="w-7 h-7 object-contain drop-shadow-md"
+                              unoptimized
+                            />
+                            <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                              {tech}
+                            </span>
+                          </motion.div>
+                        ) : (
+                          <motion.span 
+                            key={tech} 
+                            className="text-xs px-3 py-1.5 rounded-full text-gray-300 font-medium bg-gray-800 border border-gray-700"
+                            whileHover={{ scale: 1.05, borderColor: "rgba(147, 51, 234, 0.5)" }}
+                          >
+                            {tech}
+                          </motion.span>
+                        )
+                      })}
                     </div>
 
                     {project.link && (
@@ -320,7 +358,7 @@ export default function Home() {
 
       {/* Personal Section */}
       <SpotlightSection 
-        className="py-24 bg-gray-900"
+        className="relative z-10 py-24 bg-gray-900/70 backdrop-blur-sm"
         spotlightColor="rgba(16, 185, 129, 0.1)"
       >
         <div className="max-w-5xl mx-auto px-6">
@@ -435,7 +473,7 @@ export default function Home() {
       </SpotlightSection>
 
       {/* Footer */}
-      <footer className="relative py-20 overflow-hidden">
+      <footer className="relative z-10 py-20 overflow-hidden bg-gray-950/80 backdrop-blur-sm">
         <FloatingShapes variant="dark" />
         <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent" />
         
