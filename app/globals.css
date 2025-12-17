@@ -57,6 +57,18 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-space), system-ui, sans-serif;
+  }
+  
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Selection color */
+  ::selection {
+    background-color: rgba(59, 130, 246, 0.3);
+    color: white;
   }
 }
 

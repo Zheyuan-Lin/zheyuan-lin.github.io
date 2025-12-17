@@ -1,8 +1,17 @@
 import type React from "react"
-import { Inter } from "next/font/google"
+import { Space_Grotesk, Syne } from "next/font/google"
 import "./globals.css"
+import { CustomCursor } from "@/components/custom-cursor"
 
-const inter = Inter({ subsets: ["latin"] })
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ["latin"],
+  variable: "--font-space",
+})
+
+const syne = Syne({ 
+  subsets: ["latin"],
+  variable: "--font-syne",
+})
 
 export const metadata = {
   title: "Zheyuan Lin - Software Engineer",
@@ -16,7 +25,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${spaceGrotesk.variable} ${syne.variable} font-sans`}>
+        <CustomCursor />
         {children}
       </body>
     </html>

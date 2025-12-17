@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Zheyuan Lin",
   title: "CS & Math @ Emory University",
   gpa: "3.93",
-  bio: "I build backend systems and ML pipelines. Currently learning more about distributed systems.",
+  bio: "I code",
   email: "zheyuan.lin@emory.edu",
   phone: "(857) 354-7800",
   location: "Atlanta, GA",
