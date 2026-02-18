@@ -2,7 +2,11 @@ export const personalInfo = {
   name: "Zheyuan Lin",
   title: "CS & Math @ Emory University",
   gpa: "3.93",
-  bio: "I code",
+  bio: `Hey there, I'm Zheyuan.
+
+I'm a Computer Science and Mathematics student at Emory University with a strong interest in distributed systems, machine learning infrastructure, and full-stack development.
+
+I enjoy building scalable backend systems and have experience working with high-throughput services at companies like Tencent and XiaoMi. I'm particularly interested in the intersection of systems engineering and AI, focusing on building reliable, production-grade ML infrastructure.`,
   email: "zheyuan.lin@emory.edu",
   phone: "(857) 354-7800",
   location: "Atlanta, GA",
@@ -13,6 +17,12 @@ export const personalInfo = {
   },
   photo: "/self4.png"
 }
+
+export const researchInterests = [
+  "Distributed systems and microservices architecture",
+  "Machine learning infrastructure and MLOps",
+  "High-performance backend systems"
+]
 
 export const experiences = [
   {
@@ -56,7 +66,20 @@ export const experiences = [
 
 export const projects = [
   {
+    title: "EEG Foundation Model",
+    period: "May 2025 - Present",
+    description: "Built self-supervised EEG foundation model using encoder, CSM embedder (NeuroGPT), and GPT-2/DistilGPT-2 decoder with causal attention for pretraining on unlabeled brain signals and downstream fine-tuning.",
+    image: "/jenai.png",
+    stack: ["python", "pytorch", "transformers"],
+    link: "",
+    highlights: [
+      "Engineered end-to-end data pipeline using MNE-based conversion, 19-channel 10-20 montage preprocessing, overlapping temporal chunking, and attention-masked collation to support efficient transformer training on raw recordings",
+      "Established reproducible evaluation framework with K-fold cross-validation, early stopping, SafeTensors checkpointing, and DeepLIFT interpretability to generate stable decoding metrics and spatial-temporal importance maps"
+    ]
+  },
+  {
     title: "Emory NLP Lab With JenAI",
+    period: "May 2025 - Jan 2026",
     description: "Fine-tuned Llama-2-7B using QLoRA (4-bit quantization, rank-32) on Jenkins domain knowledge, achieving 45% accuracy improvement (ROUGE-L: 0.52→0.75) on technical troubleshooting queries while training only 1.7% of parameters",
     image: "/jenai.png",
     stack: ["python", "pytorch", "flask", "react", "docker", "langchain"],
@@ -68,16 +91,27 @@ export const projects = [
     ]
   },
   {
+    title: "GraphQL Query Generation API",
+    period: "Sep 2024 - Jan 2025",
+    description: "Engineered NL-to-GraphQL translation system using OpenAI GPT-4 API and LangChain with schema-driven prompt engineering, achieving 80%+ accuracy on clinical cohort queries.",
+    image: "/jenai.png",
+    stack: ["python", "fastapi", "openai", "graphql", "redis", "docker"],
+    link: "",
+    highlights: [
+      "Designed resilient LLM output validation pipeline with three-layer fallback parsing (structured JSON → truncation repair → regex extraction) and Redis result caching",
+      "Increased parse success rate to 95%+ and reduced API latency by 90% through few-shot learning and contextual examples"
+    ]
+  },
+  {
     title: "Visualized Data Interpretation Bias Study Platform",
+    period: "2024",
     description: "Building research platform on how Socratic prompting influences data interpretation bias, publishing to CHI 2026. Implemented interaction tracking system with D3.js interactive charts and real-time analysis.",
     image: "/lumos.png",
     stack: ["react", "python", "websocket", "d3", "postgresql", "docker"],
     link: "https://github.com/Zheyuan-Lin/Lumos-Socratis_Prompts",
     highlights: [
-      "Implemented interaction tracking system capturing 40+ event types (hover, click, filter, encoding changes) on D3.js interactive chart types (scatter, dot, bar, line, strip plots) with millisecond-precision timestamps and debounced transmission (200ms)",
-      "Designed Python analysis pipeline computing attention heatmaps and chi-square tests to quantify visualization bias patterns",
-      "Deployed containerized services using Docker with PostgreSQL database, ensuring <100ms latency for real-time updates",
-      "Built WebSocket telemetry for multi-observation sessions supporting 10+ concurrent users"
+      "Implemented interaction tracking system capturing 40+ event types (hover, click, filter, encoding changes) on D3.js interactive chart types with millisecond-precision timestamps",
+      "Designed Python analysis pipeline computing attention heatmaps and chi-square tests to quantify visualization bias patterns"
     ]
   }
 ]
@@ -148,5 +182,8 @@ export const techLogos: { [key: string]: string } = {
   "pytorch": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
   "langchain": "https://python.langchain.com/favicon.ico",
   "openai": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg",
-  "chromadb": "https://www.trychroma.com/favicon.svg"
+  "chromadb": "https://www.trychroma.com/favicon.svg",
+  "transformers": "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+  "fastapi": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+  "graphql": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg"
 }

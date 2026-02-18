@@ -1,16 +1,17 @@
 import type React from "react"
-import { Space_Grotesk, Syne } from "next/font/google"
+import { Source_Sans_3, Merriweather } from "next/font/google"
 import "./globals.css"
-import { CustomCursor } from "@/components/custom-cursor"
 
-const spaceGrotesk = Space_Grotesk({ 
+const sourceSans = Source_Sans_3({ 
   subsets: ["latin"],
-  variable: "--font-space",
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700"],
 })
 
-const syne = Syne({ 
+const merriweather = Merriweather({ 
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-serif",
+  weight: ["300", "400", "700"],
 })
 
 export const metadata = {
@@ -25,8 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${syne.variable} font-sans`}>
-        <CustomCursor />
+      <body className={`${sourceSans.variable} ${merriweather.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
