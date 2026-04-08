@@ -20,26 +20,25 @@ I enjoy building scalable backend systems and have experience working with high-
 
 export const researchInterests = [
   "Distributed systems and microservices architecture",
-  "Machine learning infrastructure and MLOps",
-  "High-performance backend systems"
+  "Transformers, Attention, vLLM, and LLMs",
+  "Agentic AI, context engineering, RAG, and MCP"
 ]
 
 export const experiences = [
   {
-    title: "SDE Intern @ Tencent",
+    title: "SDE Intern @ Bytedance",
     period: "May 2025 - Aug 2025",
     description: "Built SpringBoot A/B testing traffic allocator serving 500+ experiments; consolidated 5 APIs reducing integration time by 80%.",
-    stack: ["java", "spring", "redis", "kubernetes", "prometheus"],
+    stack: ["Java", "spring", "Kafka", "Flink", "PostgreSQL", ],
     highlights: [
-      "Built SpringBoot A/B testing traffic allocator serving 500+ concurrent experiments; consolidated 5 departmental APIs into unified SDK reducing integration time by 80% (2 days → 2 hours) and eliminating cross-team coordination overhead",
-      "Achieved 70x P99.9 latency improvement (363ms → 5.2ms) by offloading runtime 4-table joins to backend Redis wide tables with 5-minute refresh cycles, reducing SDK memory footprint by 60% through wide tables containing minimal field sets",
-      "Employed distributed cache eliminating configuration update blocking, reducing deployment windows to <5 minutes",
-      "Established Prometheus/Grafana observability with <1-min detection; built adapters for .NET/Java legacy clients; discovered 12 edge cases; deployed via Kubernetes with Github Action; resolved Redis pool exhaustion"
+    "Engineered real-time budget cap signal system by building Kafka/Flink streaming pipeline with PostgreSQL persistence, achieving 35% latency reduction and eliminating 45% of zero-budget campaign retrievals for Sponsored Ads platform",
+    "Implemented exactly-once semantics via Apache Flink transactional sinks to prevent revenue leakage from post-budget impressions, enabling sub-second budget cap propagation across distributed ad-serving services.",
+    "Improved production reliability by embedding budget state directly into the search index, removing downstream filtering overhead and allowing campaigns to resume instantly upon budget increases without manual intervention."
     ]
   },
   {
     title: "SDE Intern @ Invest ATL",
-    period: "May 2024 - Aug 2024",
+    period: "May 2025 - Aug 2025",
     description: "Built ML platform to automate affordable housing tax credit applications, eliminating 5 hours of manual work per application.",
     stack: ["python", "react", "openai", "chromadb", "docker"],
     highlights: [
@@ -51,15 +50,14 @@ export const experiences = [
   },
   {
     title: "SDE Intern @ XiaoMi",
-    period: "May 2023 - Sep 2023",
-    description: "Developed Kubernetes debugging platform serving 200+ backend engineers across 30+ microservices managing 400+ pods in production.",
-    stack: ["go", "grpc", "kubernetes", "react", "postgresql", "redis", "websocket"],
+    period: "May 2024 - Sep 2024",
+    description: "Built SpringBoot A/B testing traffic allocator serving 500+ experiments; consolidated 5 APIs reducing integration time by 80%.",
+    stack: ["java", "spring", "redis", "kubernetes", "prometheus"],
     highlights: [
-      "Developed Kubernetes debugging platform serving 200+ backend engineers across 30+ microservices managing 400+ pods in production, reducing infrastructure support tickets by 40%, saving estimated 40+ hours/month in manual troubleshooting",
-      "Achieved P95 latency 45ms at 500 req/sec by optimizing gRPC connection pooling and Redis caching (94.5% hit rate)",
-      "Built Go gRPC microservices platform for workload health analysis, pod management, and monitoring with JWT/RBAC authentication, namespace-scoped permissions, and PostgreSQL audit logging tracking 10K+ ops/month",
-      "Developed React console plugin with real-time workload visualization via WebSockets with restart pattern detection",
-      "Architected comprehensive Chronosphere monitoring integration with automated alerting and dashboard embedding"
+      "Built SpringBoot A/B testing traffic allocator serving 500+ concurrent experiments; consolidated 5 departmental APIs into unified SDK reducing integration time by 80% (2 days → 2 hours) and eliminating cross-team coordination overhead",
+      "Achieved 70x P99.9 latency improvement (363ms → 5.2ms) by offloading runtime 4-table joins to backend Redis wide tables with 5-minute refresh cycles, reducing SDK memory footprint by 60% through wide tables containing minimal field sets",
+      "Employed distributed cache eliminating configuration update blocking, reducing deployment windows to <5 minutes",
+      "Established Prometheus/Grafana observability with <1-min detection; built adapters for .NET/Java legacy clients; discovered 12 edge cases; deployed via Kubernetes with Github Action; resolved Redis pool exhaustion"
     ]
   }
 ]
@@ -71,7 +69,7 @@ export const projects = [
     description: "Built self-supervised EEG foundation model using encoder, CSM embedder (NeuroGPT), and GPT-2/DistilGPT-2 decoder with causal attention for pretraining on unlabeled brain signals and downstream fine-tuning.",
     image: "/jenai.png",
     stack: ["python", "pytorch", "transformers"],
-    link: "",
+    link: "https://github.com/Zheyuan-Lin/eeg-foundation",
     highlights: [
       "Engineered end-to-end data pipeline using MNE-based conversion, 19-channel 10-20 montage preprocessing, overlapping temporal chunking, and attention-masked collation to support efficient transformer training on raw recordings",
       "Established reproducible evaluation framework with K-fold cross-validation, early stopping, SafeTensors checkpointing, and DeepLIFT interpretability to generate stable decoding metrics and spatial-temporal importance maps"
@@ -96,7 +94,7 @@ export const projects = [
     description: "Engineered NL-to-GraphQL translation system using OpenAI GPT-4 API and LangChain with schema-driven prompt engineering, achieving 80%+ accuracy on clinical cohort queries.",
     image: "/jenai.png",
     stack: ["python", "fastapi", "openai", "graphql", "redis", "docker"],
-    link: "",
+    link: "https://github.com/Zheyuan-Lin/nl2graphql",
     highlights: [
       "Designed resilient LLM output validation pipeline with three-layer fallback parsing (structured JSON → truncation repair → regex extraction) and Redis result caching",
       "Increased parse success rate to 95%+ and reduced API latency by 90% through few-shot learning and contextual examples"
@@ -117,8 +115,8 @@ export const projects = [
 ]
 
 export const currently = {
-  reading: "The Three-Body Problem by Liu Cixin",
-  learning: "Distributed systems & Raft consensus",
+  reading: "Wuthering Heights by Emily Bronte",
+  learning: "Agentic AI & vLLM",
   listening: "Lo-fi hip hop radio - beats to relax/study to",
   brewing: "V60 pour-over, 15g coffee : 250g water, 2:30 total time"
 }
