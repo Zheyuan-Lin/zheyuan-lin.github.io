@@ -4,9 +4,9 @@ export const personalInfo = {
   gpa: "3.93",
   bio: `Hey there, I'm Zheyuan.
 
-I'm a Computer Science and Mathematics student at Emory University with a strong interest in distributed systems, machine learning infrastructure, and full-stack development.
+I'm a Computer Science and Mathematics student at Emory University with a strong interest in AI/ML, AI Infrastructure, and full-stack development.
 
-I enjoy building scalable backend systems and have experience working with high-throughput services at companies like Tencent and XiaoMi. I'm particularly interested in the intersection of systems engineering and AI, focusing on building reliable, production-grade ML infrastructure.`,
+I enjoy building scalable backend systems and have experience working with production level services at companies like Agilysys and XiaoMi. I'm particularly interested in the intersection of systems engineering and AI, focusing on building reliable, production-grade ML infrastructure.`,
   email: "zheyuan.lin@emory.edu",
   phone: "(857) 354-7800",
   location: "Atlanta, GA",
@@ -19,15 +19,14 @@ I enjoy building scalable backend systems and have experience working with high-
 }
 
 export const researchInterests = [
-  "Distributed systems and microservices architecture",
   "Transformers, Attention, vLLM, and LLMs",
   "Agentic AI, context engineering, RAG, and MCP"
 ]
 
 export const experiences = [
   {
-    title: "SDE Intern @ Bytedance",
-    period: "May 2025 - Aug 2025",
+    title: "SDE Intern @ Agilysys",
+    period: "May 2026 - Aug 2026",
     description: "Built SpringBoot A/B testing traffic allocator serving 500+ experiments; consolidated 5 APIs reducing integration time by 80%.",
     stack: ["Java", "spring", "Kafka", "Flink", "PostgreSQL", ],
     highlights: [
@@ -36,29 +35,35 @@ export const experiences = [
     "Improved production reliability by embedding budget state directly into the search index, removing downstream filtering overhead and allowing campaigns to resume instantly upon budget increases without manual intervention."
     ]
   },
-  {
-    title: "SDE Intern @ Invest ATL",
-    period: "May 2025 - Aug 2025",
-    description: "Built ML platform to automate affordable housing tax credit applications, eliminating 5 hours of manual work per application.",
-    stack: ["python", "react", "openai", "chromadb", "docker"],
-    highlights: [
-      "Built ML platform to automate affordable housing tax credit applications, eliminating 5 hours of manual work per application",
-      "Built geospatial scoring engine implementing Georgia QAP compliance rules across 19 amenity types, scraping 3,000+ POI via Google Maps API and achieving 88% accuracy through polygon containment tests and Haversine calculations",
-      "Built RAG pipeline using OpenAI GPT-4 and ChromaDB vector database to process 124-page manual, achieving 95% answer accuracy with automated citation generation through hybrid retrieval, reducing rule interpretation errors by 60%",
-      "Developed full-stack application using React for spatial indexing and interactive heatmap visualization of scoring distributions"
-    ]
-  },
+  // {
+  //   title: "SDE Intern @ Invest ATL",
+  //   period: "May 2025 - Aug 2025",
+  //   description: "Built ML platform to automate affordable housing tax credit applications, eliminating 5 hours of manual work per application.",
+  //   stack: ["python", "react", "openai", "chromadb", "docker"],
+  //   highlights: [
+  //     "Built ML platform to automate affordable housing tax credit applications, eliminating 5 hours of manual work per application",
+  //     "Built geospatial scoring engine implementing Georgia QAP compliance rules across 19 amenity types, scraping 3,000+ POI via Google Maps API and achieving 88% accuracy through polygon containment tests and Haversine calculations",
+  //     "Built RAG pipeline using OpenAI GPT-4 and ChromaDB vector database to process 124-page manual, achieving 95% answer accuracy with automated citation generation through hybrid retrieval, reducing rule interpretation errors by 60%",
+  //     "Developed full-stack application using React for spatial indexing and interactive heatmap visualization of scoring distributions"
+  //   ]
+  // },
   {
     title: "SDE Intern @ XiaoMi",
     period: "May 2024 - Sep 2024",
     description: "Built SpringBoot A/B testing traffic allocator serving 500+ experiments; consolidated 5 APIs reducing integration time by 80%.",
     stack: ["java", "spring", "redis", "kubernetes", "prometheus"],
+
     highlights: [
-      "Built SpringBoot A/B testing traffic allocator serving 500+ concurrent experiments; consolidated 5 departmental APIs into unified SDK reducing integration time by 80% (2 days → 2 hours) and eliminating cross-team coordination overhead",
-      "Achieved 70x P99.9 latency improvement (363ms → 5.2ms) by offloading runtime 4-table joins to backend Redis wide tables with 5-minute refresh cycles, reducing SDK memory footprint by 60% through wide tables containing minimal field sets",
-      "Employed distributed cache eliminating configuration update blocking, reducing deployment windows to <5 minutes",
-      "Established Prometheus/Grafana observability with <1-min detection; built adapters for .NET/Java legacy clients; discovered 12 edge cases; deployed via Kubernetes with Github Action; resolved Redis pool exhaustion"
-    ]
+      "Engineered real-time budget cap signal system by building Kafka/Flink streaming pipeline with PostgreSQL persistence, achieving 35% latency reduction and eliminating 45% of zero-budget campaign retrievals for Sponsored Ads platform",
+      "Implemented exactly-once semantics via Apache Flink transactional sinks to prevent revenue leakage from post-budget impressions, enabling sub-second budget cap propagation across distributed ad-serving services.",
+      "Improved production reliability by embedding budget state directly into the search index, removing downstream filtering overhead and allowing campaigns to resume instantly upon budget increases without manual intervention."
+      ]
+    // highlights: [
+    //   "Built SpringBoot A/B testing traffic allocator serving 500+ concurrent experiments; consolidated 5 departmental APIs into unified SDK reducing integration time by 80% (2 days → 2 hours) and eliminating cross-team coordination overhead",
+    //   "Achieved 70x P99.9 latency improvement (363ms → 5.2ms) by offloading runtime 4-table joins to backend Redis wide tables with 5-minute refresh cycles, reducing SDK memory footprint by 60% through wide tables containing minimal field sets",
+    //   "Employed distributed cache eliminating configuration update blocking, reducing deployment windows to <5 minutes",
+    //   "Established Prometheus/Grafana observability with <1-min detection; built adapters for .NET/Java legacy clients; discovered 12 edge cases; deployed via Kubernetes with Github Action; resolved Redis pool exhaustion"
+    // ]
   }
 ]
 
